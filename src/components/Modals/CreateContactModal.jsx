@@ -19,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
     text: {
         marginLeft: 20,
         width: 550
+    },
+    newButton: {
+        marginLeft: 1009,
+        width: 140,
+        marginTop: 10
     }
 }))
 const CreateContactModal  = (props) => {
@@ -42,7 +47,8 @@ const CreateContactModal  = (props) => {
 
     const submitHandler = e => {
         e.preventDefault();
-        if(!valueId || !valueFirstName || !valueLastName || valuePhone) return;
+        setOpen(false);
+        if(!valueId || !valueFirstName || !valueLastName || !valuePhone) return;
         props.addContact(valueId, valueFirstName, valueLastName, valuePhone);
     }
 
@@ -52,16 +58,16 @@ const CreateContactModal  = (props) => {
     const body = (
         <form onSubmit={submitHandler}>
             <div>
-                <TextField className={classes.text} autoFocusmargin="dense" label="ID" type="number" value={valueId} onChange={e => setValueId((e.target.value))} />
+                <TextField className={classes.text}  label="ID" type="number" value={valueId} onChange={e => setValueId((e.target.value))} />
             </div>
             <div>
-                <TextField className={classes.text} autoFocusmargin="dense" type="text" name="firstName" value={valueFirstName} onChange={e => setValueFirstName(e.target.value)} placeholder="First Name" fullWidth/>
+                <TextField className={classes.text} type="text" name="firstName" value={valueFirstName} onChange={e => setValueFirstName(e.target.value)} placeholder="First Name" fullWidth/>
             </div>
             <div>
-                <TextField className={classes.text} autoFocusmargin="dense" type="text" name="lastName" value={valueLastName} onChange={e => setValueLastName(e.target.value)} placeholder="Last Name" fullWidth/>
+                <TextField className={classes.text} type="text" name="lastName" value={valueLastName} onChange={e => setValueLastName(e.target.value)} placeholder="Last Name" fullWidth/>
             </div>
             <div>
-                <TextField className={classes.text} autoFocusmargin="dense" type="phone" name="phone" value={valuePhone} onChange={e => setValuePhone(e.target.value)} placeholder="Phone Number" fullWidth/>
+                <TextField className={classes.text} type="phone" name="phone" value={valuePhone} onChange={e => setValuePhone(e.target.value)} placeholder="Phone Number" fullWidth/>
             </div>
             <div>
                 <Button className={classes.button} variant="contained" color="primary" type="submit">Add</Button>
@@ -71,7 +77,7 @@ const CreateContactModal  = (props) => {
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={openClickHandler}>New contact</Button>
+            <Button  className={classes.newButton} variant="outlined" color="primary" onClick={openClickHandler}>New contact</Button>
             <Dialog fullWidth open={open} onClose={closeHandler}>
                 <DialogContent>
                     <DialogTitle>

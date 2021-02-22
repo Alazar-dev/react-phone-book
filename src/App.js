@@ -25,19 +25,18 @@ function App() {
     {id: 2, firstName: 'Opa', lastName: 'Efe', phone: '0912131415'}
   ])
 
-  // const removeContact = id => {
-    //  const items = contacts.filter((item) => item.id !== id);
-    //  setContacts(items);
-    const removeContact = id => {
-      const newTodos = [...contacts];
-      newTodos.splice(id, 1);
-      setContacts(newTodos);
 
+  contacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
+
+  const removeContact = id => {
+    const newConatcts = contacts.filter(item => item.id !== id )
+    setContacts(newConatcts);
   }
 
   const addContact = (id, firstName, lastName, phone) => {
     const newContacts = [...contacts, {id, firstName, lastName, phone}]
     setContacts(newContacts);
+    newContacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
   } 
 
   return (

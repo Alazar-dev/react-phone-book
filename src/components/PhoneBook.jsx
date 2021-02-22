@@ -9,6 +9,7 @@ const useStyles = makeStyles((theme)=>({
     }
 }))
 
+
 const PhoneBook = (props) => {
     const classes = useStyles();
 
@@ -18,7 +19,7 @@ const PhoneBook = (props) => {
             <TableCell>{props.contact.firstName}</TableCell>
             <TableCell>{props.contact.lastName}</TableCell>
             <TableCell>{props.contact.phone}</TableCell>
-            <TableCell><Button variant="contained" color="secondary" onClick={()=> props.removeContact(props.id)}>Remove</Button></TableCell>
+            <TableCell><Button variant="contained" color="secondary" onClick={()=> props.removeContact(props.contact.id)}>Remove</Button></TableCell>
         </tr>
     )
 
