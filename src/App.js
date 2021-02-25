@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, Fragment} from 'react';
 import {makeStyles} from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table';
 import TableRow from '@material-ui/core/TableRow';
@@ -6,7 +6,11 @@ import TableBody from '@material-ui/core/TableBody';
 
 import Header from './components/Header'
 import PhoneBook from './components/PhoneBook';
-import CreateContactModal from './components/Modals/CreateContactModal'
+import CreateContactModal from './components/Modals/CreateContactModal';
+
+import Nav from './components/Navigation';
+import Tasks from './components/pages/Tasks';
+import Todo from './components/pages/Todo';
 
 const useStyles = makeStyles((theme) =>({
   root: {
@@ -25,7 +29,6 @@ function App() {
     {id: 2, firstName: 'Opa', lastName: 'Efe', phone: '0912131415'}
   ])
 
-
   contacts.sort((a, b) => a.lastName.localeCompare(b.lastName))
 
   const removeContact = id => {
@@ -40,7 +43,7 @@ function App() {
   } 
 
   return (
-    <div>
+    <>
       <Header />
       <div className={classes.root}>
         <Table className={classes.tables}>
@@ -62,7 +65,7 @@ function App() {
         
           <CreateContactModal addContact={addContact} />
       </div>    
-    </div>
+    </>
 
   );
 }
